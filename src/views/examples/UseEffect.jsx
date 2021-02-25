@@ -11,6 +11,8 @@ const calcFatorial = s => {
 
 const UseEffect = (props) => {
 
+    const padding = {paddingTop: '20px', paddingBottom: '20px', display: 'flex', justifyContent: 'center'}
+
     const [number, setNumber] = useState(1)
     const [fatorial, setFatorial] = useState(1)
     const [parOuImpar, setParOuImpar] = useState(1)
@@ -26,19 +28,19 @@ const UseEffect = (props) => {
                 subtitle="Permite executar efeitos colaterais em componentes funcionais!"
             />
             <SectionTitle title="Exercício #01"></SectionTitle>
-            <div>
+            <div style={padding} >
                 <span className="text">Fatorial: </span>
                 <span className="text red">{fatorial === -1 ? 'Não Existe' : fatorial}</span>
             </div>
-            <div>
+            <div style={padding} >
                 <input type="number" className="input" value={number} onChange={e => setNumber(+e.target.value)}/>
             </div>
             <SectionTitle title="Exercício #02"></SectionTitle>
-            <div>
-                <span className="text">Paridade: </span>
+            <div style={padding} >
+                <span  className="text">Paridade: </span>
                 <span className="text red">{parOuImpar % 2 === 0 ? 'Par' : 'Ímpar'}</span>
             </div>
-            <div>
+            <div style={padding} >
                 <input type="number" className="input" value={parOuImpar} onChange={e => setParOuImpar(+e.target.value)}/>
             </div>
         </div>
