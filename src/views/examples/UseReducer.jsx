@@ -1,37 +1,12 @@
 import React, { useReducer } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
 import SectionTitle from '../../components/layout/SectionTitle'
-
-const initialState = {
-    cart: [],
-    products: [],
-    user: null,
-    // foco...
-    number: 0
-}
-
-function reducer(state, action) {
-    switch(action.type){
-        case 'number_add2':
-            return {...state, number: state.number+2}
-        case 'mult7':
-            return {...state, number: state.number*7}
-        case 'div25':
-            return {...state, number: state.number/25}
-        case 'parseInt':
-            return {...state, number: parseInt(state.number)}
-        case 'addN':
-            return {...state, number: state.number + action.payload.number }
-        case 'login':
-            return {...state, user: { name: action.payload.name }}
-        default:
-            return state
-    }   
-}
+import { initialState, allReducers } from '../../store'
+import { numberAdd2, login } from '../../store/actions/indexActions'
 
 const UseReducer = (props) => {
 
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(allReducers, initialState)
     let N
 
     return (
@@ -46,8 +21,8 @@ const UseReducer = (props) => {
                 <span className="text">{state.number}</span>
                 <input type="number" className="input" value={N}/>
                 <div>
-                    <button className="btn" onClick={_ => dispatch({type: 'login', payload:{ name: 'Gabriel' }})}>Login</button>
-                    <button className="btn" onClick={_ => dispatch({type: 'number_add2'})}>+2</button>
+                    <button className="btn" onClick={_ => login(dispatch, 'Maria')}>Login</button>
+                    <button className="btn" onClick={_ => numberAdd2(dispatch)}>+2</button>
                     <button className="btn" onClick={_ => dispatch({type: 'mult7'})}>*7</button>
                     <button className="btn" onClick={_ => dispatch({type: 'div25'})}>/25</button>
                     <button className="btn" onClick={_ => dispatch({type: 'parseInt'})}>Parse</button>
